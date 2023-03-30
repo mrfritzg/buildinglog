@@ -7,6 +7,9 @@ const express = require('express')
 // Setup our Express app
 const app = express()
 
+// Load cors -> npm i cors
+const cors = require('cors')
+
 const PORT = 8080 
 
 // Load the connectDB function
@@ -14,6 +17,13 @@ const connectDB = require('./config/db')
 
 // Connect to database
 connectDB()
+
+// Configure our app to allow other servers to communicate with it
+app.use(cors())
+
+// Setup a middleware for receiving JSON inside our request objects (ex: POST, PUT)
+app.use(express.json())
+
 
 // Load the create engine -> (npm install jsx-view-engine react react-dom)
 const { createEngine } = require('jsx-view-engine')

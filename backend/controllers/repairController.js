@@ -8,10 +8,11 @@ module.exports.seed = async (req, res) => {
     res.redirect('/repairs')
 }
 
-module.exports.index = async (req, res) => {
-    const repairs = await Repairs.find().sort({ createdAt: 1 })
+module.exports.index = (req, res) => {
+    // const repairs = await Repairs.find().sort({ createdAt: 1 })
     // res.render('repairs/Index', { repairs })
-    res.send('Welcome to the Bulding Mainenance Logs')
+    // res.send('Welcome to the Bulding Mainenance Logs')
+    res.json({message: 'hello'})
 }
 
 module.exports.new = async (req, res) => {
