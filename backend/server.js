@@ -24,7 +24,6 @@ app.use(cors())
 // Setup a middleware for receiving JSON inside our request objects (ex: POST, PUT)
 app.use(express.json())
 
-
 // Load the create engine -> (npm install jsx-view-engine react react-dom)
 const { createEngine } = require('jsx-view-engine')
 

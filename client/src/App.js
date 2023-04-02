@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router-dom';
+import AddNew from './pages/AddNew';
+import About from './pages/About';
+import Repairs from './pages/Repairs';
+import Home from './pages/Home';
 
 function App() {
 
-let [repairs, setRepairs] = useState([]);
+
 
 useEffect( () => {
 
@@ -22,38 +27,21 @@ useEffect( () => {
 }, [])
 
 
-async function addToRepairList() {
 
-  let repairItem = {
-    subject: 'input',
-    user: 'Bob',
-    description: '',
-    image: '',
-    type: 'Electrical',
-    comments: '',
-    fixed: false
-  };
-
-  const response = await fetch('/todos', {
-    method: 'POST',
-    body: JSON.stringify(todo),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-
-  const newTodo = await response.json()
-
-  let newTodos = [...todos, newTodo];
-
-  setTodos(newTodos);
-  setInput("");
-}
 
 
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/about" element={<About />}/>
+        <Route path="/new" element={<AddNew />}/>
+        {/* <Route path="/character/:symbol" element={<Character />}/> */}
+        <Route path="/repairs" element={<Repairs />}/>
+        <Route path="*" element={<><h1>This Page could not be found...</h1></>} />
+      </Routes>
+
     </div>
   );
 }
