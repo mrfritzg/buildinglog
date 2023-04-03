@@ -30,21 +30,3 @@ router.get('/:id/edit', repairController.edit)
 
 // show
 router.get('/:id', repairController.show)
-
-
-
-
-// EXTRA ROUTES (for comments)
-
-router.post('/:id/comments', repairController.createComment)
-
-router.delete('/:id/comments/:cid', repairController.deleteComment)
-
-router.get('/:id/comments', repairController.indexComment)
-
-router.get('/:id/comments/:cid', repairController.showComment)
-
-router.put('/:id/comments/:cid', repairController.updateComment)
-
-
-module.exports = router
