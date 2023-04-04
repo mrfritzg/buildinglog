@@ -4,6 +4,8 @@ const router = express.Router()
 
 const repairController = require('../controllers/repairController');
 
+const { authorize, confirmUserAccess } = require('../middleware/authMiddleware')
+
 // I.N.D.U.C.E.S  ->  an acronym that helps remember how to properly order routes
 // Index, New, Delete, Update, Create, Edit, Show
 
@@ -13,20 +15,16 @@ router.get('/seed', repairController.seed)
 // index
 router.get('/', repairController.index)
 
-// new
-router.get('/new', repairController.new)
-
 // delete
-router.delete('/:id', repairController.delete)
+router.delete('/:id', authorize, confirmUserAccess, repairController.delete)
 
 // update
-router.put('/:id', repairController.update)
+router.put('/:id', authorize, confirmUserAccess, repairController.update)
 
 // create
-router.post('/', repairController.create)
-
-// edit 
-router.get('/:id/edit', repairController.edit)
+router.post('/', authorize, repairController.create)
 
 // show
 router.get('/:id', repairController.show)
+
+module.exports = router;

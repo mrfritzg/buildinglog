@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 
 const commentSchema = new Schema({
    body: { type: String },
-   user: { type: String, default: 'Bob' },
+   user: { type: String, default: 'Bob' , required: true },
 
 }, { timestamps: true })
 
